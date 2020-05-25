@@ -1,0 +1,36 @@
+{# Set Logo #}
+{% set logo = siteIdentity.logo.one() %}
+
+{# Fetch all nav items #}
+{% set nav =  craft.entries.section('nav') %}
+
+{# Get all base level items #}
+{% set navLevel1 = nav.level(1).all() %}
+
+{# Get all second level items#}
+{% set navLevel2 = nav.level(2) %}
+
+<header class="nav">
+    <div class="u-container">
+        <img class="nav_logo" src="{{logo.url|default('NaN')}}" alt="{{logo}}">
+
+        <nav class="nav_navbar">
+            {% for item in navLevel1 %}
+                {# Check if item has children #}
+                {% if item.hasDescendants() %}
+                    {# Fetch the children from our array #}
+                    {% set children = navLevel2.descendantOf(item).all() %} 
+                    <li><a href="§">{{item}}</a>
+                        <ul>
+                            {% for child in children %}
+                                <li><a href="/{{child.slug}}">{{child}}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% else %}
+                    <li><a href="/{{item.slug}}">{{item}}</a></li>
+                {% endif %}
+            {% endfor %}
+        </nav>
+    </div>
+</header>
