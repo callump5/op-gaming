@@ -1,0 +1,110 @@
+{% extends 'index' %}
+
+{% block heroSection %}
+    {% import 'components/_macro' as cpMacros %}
+    {{ cpMacros.cpSliderSection() }}
+{% endblock %}
+
+{% block page %}
+
+
+    {% set posts = craft.entries.section('vault').level('3') %}
+    {% set thumbs = posts.featured(1).limit(3).all() %}
+
+    {% if thumbs %}
+        <section class='u-section-padding'>
+
+            <h2 class='heading__secondary--silver heading__underline--silver mb-5'>Check out our featured posts!</h2>
+            <div class='c-blog-thumb__row'> 
+
+                {% for thumb in thumbs %}
+            
+                    {% set parent = thumb.parent %}
+
+                    <a class='c-blog-thumb__link c-blog-thumb__link--w{{loop.length}}' href='/{{thumb.uri}}'>
+                        <div class='c-blog-thumb' style='background-image: url(/{{thumb.thumbnail.one().url}})'>
+                            <div class='c-blog-thumb__content'>
+                                <h3 class='c-blog-thumb__title'>{{thumb.title}}</h3>
+                                <h4 class='c-blog-thumb__sub-title'>{{parent.title}}</h4>
+                                <p class='c-blog-thumb__text'>{{thumb.description}}</p>
+                            </div>
+                            <div class='c-blog-thumb__overlay'></div>
+                        </div>
+                    </a>
+                {% endfor  %}
+            </div>
+        </section>
+    {% endif %}
+
+    <div class='d-flex flex-row justify-content-between'>
+        <div class='col-9 main-sidebar'>
+            <section  class='u-section-padding'>
+
+                <h2 class='heading__secondary--silver heading__underline--silver mb-5'>{{ thumbs ? 'See what else we\'re talkin\' about' : 'Check out our posts'}}</h2>
+                
+                {% set list = posts.featured(0).all()%}
+                
+                <div class='c-post-list__column'>
+                
+                    {% for item in list %}
+                        {% set parent = item.parent %}
+                            
+                        <div class='c-post-list'>
+                            <a class='c-post-list__content--link' href='/{{item.uri}}'>
+                                <div class='c-post-list__row'>
+                                    <div class='c-post-list__img'  style='background-image: url(/{{item.thumbnail.one().getUrl('blogThumb')}})'></div>
+
+                                    <div class='c-post-list__content'>
+                                        <h3 class='c-post-list__content--title'>{{item.title}}</h3>
+                                        <a class='c-post-list__content--sub-title' href='/{{parent.uri}}'>{{parent.title}}</a>
+                                        <p class='c-post-list__content--text'>{{item.description}}</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>    
+                    {% endfor %}
+                </div>
+            </section>
+        </div>
+
+        <div class='col-3'>
+            <div class="u-section-padding">
+                <aside id='sidebar' class='sidebar'>
+                    <h2 class='heading__secondary--silver'>Join Now</h2>
+        
+                    {% set lootImage = craft.entries.section('lootDrop').with('thumbnail').running(1).one().thumbnail[0].url %}
+                    <div class='sidebar__lootdrop__image' style='background-image: url("{{lootImage}}")'>
+                        <h4 class='sidebar__lootdrop__title'>Chance To Win!</h4>
+                    </div>
+    
+                    <form class='sidebar__form'>
+                        <div class='sidebar__form--signup'>
+                            <div class="form-group">
+                                <label for="formGroupExampleInput">Full Name</label>
+                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Full Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="formGroupExampleInput2">Email</label>
+                                <input type="email" class="form-control" id="formGroupExampleInput2" placeholder="pwned@mail.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="formGroupExampleInput2">Password</label>
+                                <input type="password" class="form-control" id="formGroupExampleInput2" placeholder="youll never guess!">
+                            </div>
+                            <div class="form-group">
+                                <label for="formGroupExampleInput2">Password Confirmation</label>
+                                <input type="password" class="form-control" id="formGroupExampleInput2" placeholder="Repeat Password">
+                            </div>
+                        </div>
+                    </form>
+                    <div class="sidebar__form__btns">
+                        <button class='c-btn'>Login</button>
+                        <button class='c-btn'>Signup</button>
+                    </div> 
+                </aside>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

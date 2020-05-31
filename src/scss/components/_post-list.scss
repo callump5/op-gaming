@@ -1,0 +1,110 @@
+.c-post-list {
+    width: 100%;
+    position: relative;
+    
+
+
+
+    &:not(:last-child){
+        margin-bottom: 40px;
+
+    }
+
+
+    &__column {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    &__row {
+        @include cp-flex-start-center;
+
+        &hover {
+            background-color: black;
+        }
+    }
+
+    &__img {
+        display: block;
+        border-radius: 4px;
+        height: 200px;
+        min-width: 250px;
+        background-size: cover;
+
+
+    }
+
+    &__content{
+        padding: 0 25px;
+        &--title{
+            font-size: 28px;
+            display: inline-block !important;
+            @include cp-font-primary-1;
+            margin-bottom: 0 !important;
+        
+
+        
+            &:hover {
+                &::after {
+                    width: 100%;
+                }  
+            }
+    
+    
+            &::after {
+                content: ' ';
+                position: absolute;
+                bottom: -1px;
+                left: 0;
+                width: 0;
+                height: 3px;
+                background: linear-gradient( -90deg, #ffffff, rgb(255, 166, 0));
+                transition: all .3s;
+            }
+        
+        }
+
+
+        &--sub-title{
+            display: block;
+            font-size: 16px;
+            z-index: 30;
+            @include cp-font-primary-2;
+            margin-bottom: 10px;
+            transition: all .3s;
+
+
+            &:hover {
+                &::after {
+                    width: 100%;
+                }  
+            }
+    
+    
+            &::after {
+                content: ' ';
+                position: absolute;
+                bottom: -1px;
+                left: 0;
+                width: 0;
+                height: 3px;
+                transition: all .3s;
+                background: -webkit-linear-gradient( -90deg, #ffffff, rgb(153, 153, 153));
+            }
+
+         
+        
+        }
+
+        &--text{
+
+            font-size: 14px;
+            @include cp-font-primary-2;
+        }
+
+        &--link {
+
+        }
+    }
+}

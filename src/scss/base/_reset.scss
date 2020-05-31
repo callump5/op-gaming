@@ -33,9 +33,6 @@ li a {
     background:linear-gradient(-10deg, #1a1b1f 0%,#2d3146 65% );
 }
 
-.page-container {
-    padding: 60px;
-}
 
 
 .container {
@@ -43,3 +40,12 @@ li a {
     padding-right: 0 !important;
 }
 
+[class^='col'] {
+    margin: 0;
+    padding: 0;
+}
+
+
+.main-sidebar {
+    padding-right: 100px;
+}

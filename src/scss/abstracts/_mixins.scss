@@ -11,6 +11,12 @@
     justify-content: flex-end;
     align-items: center;
 }
+@mixin cp-flex-start-center {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
 
 @mixin cp-center {
     display: flex;
@@ -25,8 +31,6 @@
 
 @mixin cp-font-color {
 
-    display: inline-block;
-
     background: -webkit-linear-gradient( -90deg, #ffffff, rgb(255, 166, 0));
 
     -webkit-background-clip: text;
@@ -36,12 +40,37 @@
 
 
 @mixin cp-font-color-2{
-
-    display: inline-block;
-
     background: -webkit-linear-gradient( -90deg, #ffffff, rgb(153, 153, 153));
-
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     
 }
+
+@mixin cp-font-primary-1 {
+    @include cp-font-color;
+    font-family: cpPrimaryFont;
+}
+
+@mixin cp-font-primary-2 {
+    @include cp-font-color-2;
+    font-family: cpPrimaryFont;
+}
+
+@mixin cp-post-thumb {
+    border-radius: 5px;
+    box-shadow:  1px 3px 10px 2px rgba(0,0,0,.5);
+}
+
+@mixin box-shadow {
+    box-shadow:  1px 3px 10px 2px rgba(0,0,0,.5);
+}
+
+@mixin gold-back {
+    background: -webkit-linear-gradient( -90deg, #ffffff, rgb(255, 166, 0));
+}
+
+@mixin silver-back {
+    background: -webkit-linear-gradient( -90deg, #ffffff, rgb(153, 153, 153));
+}
+
+

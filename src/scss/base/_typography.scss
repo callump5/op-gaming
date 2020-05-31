@@ -1,17 +1,35 @@
 .heading{
     &__primary {
+        display: block !important;
         @include cp-font-color;
         font-family: cpPrimaryFont;
         font-size: 40px;
     };
     &__secondary {
-        @include cp-font-color-2;
+        @include cp-font-color;
         font-family: cpPrimaryFont;
         font-size: 32px;
-    };
+
+        &--silver{
+            @include cp-font-color;
+            font-family: cpPrimaryFont;
+            font-size: 32px;
+            @include cp-font-color-2;
+        }
+    }
+
+    &__underline {
+
+        &--silver {
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+            border-bottom: 3px solid silver;
+        }
+    }
+
 }
 
-p {
+p, label {
     font-family: cpSecondaryFont;
     @include cp-font-color-2;
     font-size:16px;

@@ -1,0 +1,14 @@
+.form-control {
+    font-family: cpSecondaryFontItalic !important; 
+    border: 1px solid $color-silver;
+    background-color: rgba(0, 0, 0, 0.6);
+    font-size: 14px;
+    color: silver !important;
+
+    &:focus{
+        background-color: rgba(0, 0, 0, 0.6);
+        border: 1px solid rgb(125, 17, 139);
+        box-shadow:  1px 1px 10px 2px rgb(125, 17, 139) !important;
+        outline: 0 !important;
+    }
+}

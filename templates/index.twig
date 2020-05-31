@@ -7,87 +7,54 @@
     <title>Welcome to Craft CMS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     <meta name="referrer" content="origin-when-cross-origin" />
-    <link rel="stylesheet" href="/assets/dist/css/main.css">
     <link rel="stylesheet" href="/assets/dist/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-
+    <link rel="stylesheet" href="/assets/dist/css/main.css">
 
 </head>
 <body>
-{% cache %}
-{% import 'components/_macro' as cpMacros %}
 
 {% include 'includes/_nav' %}
 
 
 
-{{ cpMacros.cpSliderSection() }}
+    {% block heroSection %}
+
+    {% endblock %}
 
 
 
 <div class="main page-container">
     <div class='container'>
-        {% set posts = craft.entries.section('vault').level('3') %}
-
-        <section class='py-5'>
-            <h2 class='heading__secondary mb-5'>Check out our featured posts!</h2>
-            <div class='c-blog-thumb__row'>
-                {% set thumbs = posts.featured(1).all() %}
-
-                {% for thumb in thumbs %}
-                        <a class='c-blog-thumb__link' href='/{{thumb.uri}}'>
-                            <div class='c-blog-thumb' style='background-image: url(/{{thumb.thumbnail.one().getUrl('blogThumb')}})'>
-                                <div class='c-blog-thumb__content'>
-                                    <h3 class='c-blog-thumb__title'>{{thumb.title}}</h3>
-                                    <p class='c-blog-thumb__text'>{{thumb.description}}</p>
-                                </div>
-                                <div class='c-blog-thumb__overlay'></div>
-                            </div>
-                        </a>
-                {% endfor  %}
-            </div>
-        </section>
+       
+    {% block page %}
 
 
-        <section class='py-5'>
-
-        {% set list = posts.featured(0).all()%}
-            <div class='c-post-list__column'>
-                {% for item in list %}
-                    <div class='c-post-list'>
-                        <div class='c-post-list__row'>
-                            <h3 class='c-post-list__title'>{{item.title}}</h3>
-                            <p class='c-post-list__test'>{{item.description}}</p>
-                        </div>
-                    </div>    
-                {% endfor %}
-            </div>
-        
-        
-        </section>
-        
-
+    {% endblock %}
             
 
 
 
-        </div>
 
 
     </div>
 
 </div> 
 
-{% endcache %}
 <script src='/assets/dist/js/jquery.js'></script> 
 <script src="https://kit.fontawesome.com/63a92d54e2.js" crossorigin="anonymous"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script>
 $(document).ready(function(){
-  $('.your-class').slick({
+    $('.your-class').slick({
         autoplay: true,
         arrows: true,
         autoplaySpeed: 9000,
+    });
+
+    $('.nav__menu--item').click(function(){
+        var link = $(this).find('a').attr('href');
+        window.location.href = link
     });
 });
 </script> 

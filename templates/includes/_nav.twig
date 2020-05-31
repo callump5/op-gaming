@@ -28,12 +28,12 @@
 
                     
                     {# Base nav Item with child  #}
-                    <li class='nav__menu--item'><a href="/{{item.slug}}">{{item}}{{item.navIcon|default('')|raw}}</a>
+                    <li class='nav__menu--item'><a href="/{{item.title|kebab}}">{{item}}{{item.navIcon|default('')|raw}}</a>
                         <ul class='nav__menu--submenu'>
                             {# Loop through the children #}
                             {% for child in children %}
                                 <li class='nav__menu--submenu--item'>
-                                    <a href="/{{item.slug}}/{{child.slug}}">
+                                    <a href="/{{child.uri}}">
                                         {{child}}
 
                                         {% if child.cover %}
@@ -45,7 +45,7 @@
                         </ul>
                     </li> 
                 {% else %}
-                    <li class='nav__menu--item'><a href="/{{item.slug}}">{{item}}{{item.navIcon|default('')|raw}}</a>
+                    <li class='nav__menu--item'><a href="/{{loop.index == 1 ? ' ' : item.slug }}">{{item}}{{item.navIcon|default('')|raw}}</a>
                 {% endif %}
             {% endfor %}
         </nav>
