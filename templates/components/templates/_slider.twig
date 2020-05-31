@@ -1,0 +1,19 @@
+
+{% set slides = craft.entries.section('slider').with('slideBackground').all() %}
+
+
+<div class="your-class">
+    {% for slide in slides %}
+        {% set image = slide.slideBackground[0] %}
+        <div class='slick-cp-slider'>
+                <div class='slick-slide_content container'>
+
+                    <a class='hero-section__title'>{{slide.title}}</a>
+                    <p class='hero-section__text'>{{slide.description}}</p>
+                </div>
+            <div class='slick-slide_overlay'></div>
+            <img class='slick-slide_background' src='/{{image.getUrl("sliderBackground")}}'>
+        </div>
+    {% endfor %}
+</div>
+

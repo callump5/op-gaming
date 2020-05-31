@@ -1,0 +1,52 @@
+.hero-section {
+    background-image: url(../../hero.png);
+    padding: 200px 0;
+    background-size:  cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #00000099;
+    background-blend-mode: overlay;
+    border-bottom: 3px solid silver;
+    border-top: 3px solid silver;
+
+
+    &__title {
+        @include cp-font-color;
+        display: inline ;
+        width: 60%;
+        font-family: cpPrimaryFont;
+        font-size: 40px; 
+        transition: all 3s;
+        position: relative;
+        z-index: 1000 !important;
+        margin-bottom: 9px;
+
+        &:hover {
+            &::after {
+                width: 100%;
+            }  
+        }
+
+
+        &::after {
+            content: ' ';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            transition: all .3s;
+            background: linear-gradient( -90deg, #ffffff, rgb(255, 166, 0));
+        }
+
+
+    }
+
+    &__text {
+        width: 60%;
+        color: white;        
+        font-family: cpSecondaryFontItalic;
+        font-size: 18px;
+        display: inline-block;
+    }
+}

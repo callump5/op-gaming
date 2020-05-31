@@ -5,30 +5,47 @@
 {% set nav =  craft.entries.section('nav') %}
 
 {# Get all base level items #}
-{% set navLevel1 = nav.level(1).all() %}
+{% set baseLevel = nav.level(1).with(['linkToEntry']).all() %}
 
-{# Get all second level items#}
-{% set navLevel2 = nav.level(2) %}
 
 <header class="nav">
-    <div class="u-container">
-        <img class="nav_logo" src="{{logo.url|default('NaN')}}" alt="{{logo}}">
+    <div class="container">
+        <h2 class='nav__logo'><a href='/'>OP Gaming</a></h2>
+        <nav class="nav__menu">
+            {# loop through base level nav #}
+            {% for item in baseLevel %}
 
-        <nav class="nav_navbar">
-            {% for item in navLevel1 %}
-                {# Check if item has children #}
-                {% if item.hasDescendants() %}
-                    {# Fetch the children from our array #}
-                    {% set children = navLevel2.descendantOf(item).all() %} 
-                    <li><a href="§">{{item}}</a>
-                        <ul>
+                {# Fetch the linked entry #}
+                {% set linked = item.linkToEntry %}
+                
+                {% if linked %}
+
+                    {# Fetch the linked entry's section handle #}
+                    {% set sid = linked[0].section().handle %}
+
+                    {# Fetch all the entries from the section thats not the base level #}
+                    {% set children = craft.entries.section(sid).with('cover').level('2').all() %} 
+
+                    
+                    {# Base nav Item with child  #}
+                    <li class='nav__menu--item'><a href="/{{item.slug}}">{{item}}{{item.navIcon|default('')|raw}}</a>
+                        <ul class='nav__menu--submenu'>
+                            {# Loop through the children #}
                             {% for child in children %}
-                                <li><a href="/{{child.slug}}">{{child}}</a></li>
+                                <li class='nav__menu--submenu--item'>
+                                    <a href="/{{item.slug}}/{{child.slug}}">
+                                        {{child}}
+
+                                        {% if child.cover %}
+                                            <img class="nav__menu--item--cover" src='/{{child.cover[0].url}}'>   
+                                        {% endif %}
+                                    </a>
+                                </li>
                             {% endfor %}
                         </ul>
-                    </li>
+                    </li> 
                 {% else %}
-                    <li><a href="/{{item.slug}}">{{item}}</a></li>
+                    <li class='nav__menu--item'><a href="/{{item.slug}}">{{item}}{{item.navIcon|default('')|raw}}</a>
                 {% endif %}
             {% endfor %}
         </nav>

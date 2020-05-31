@@ -1,0 +1,93 @@
+.nav {
+    background:linear-gradient(-10deg, #1a1b1f 0%,#2d3146 65% );
+    
+    & .container {
+        @include cp-flex-between-center;
+    }
+
+    &__logo {
+        display: block;
+        font-size: 30px;
+        padding: 20px 0 12px 0;
+        @include cp-font-color-2;
+        font-family: cpPrimaryFont;
+        color:$color-accent ;
+        margin: 0;
+    }
+
+    & .fas {
+        margin-left: 10px !important;
+    }
+
+    &__menu {
+        @include cp-flex-end-center;
+        height: 100%;
+
+        &--item {
+
+            & a {
+                @include cp-font-color-2;
+                font-size: 15px !important;
+            }
+            
+            @include cp-center;
+            font-family: cpPrimaryFont !important;
+            line-height: 18px;            
+            text-align: left;
+            height: inherit;
+            position: relative;
+            padding: 16px 20px 10px 20px;
+            transition: all .3s;
+
+            &--cover {
+                width: 100px;
+            }
+
+            &:hover {
+                background-color: black !important;
+                & > a {
+                    color: $color-primary;
+                    text-decoration: none;
+                }
+                & ul {
+                    max-height: 500px;
+                }
+            }
+        }
+
+        &--submenu {
+            transition: all .6s;
+            overflow: hidden;
+            background-color: $color-primary;
+            max-height: 0px;
+            position: absolute;
+            top: 67px;
+            left: 0;
+            min-width: 300px;
+            z-index: 1;
+
+            &--item {
+                width: 100% !important;
+                font-size: 10px;
+                line-height: 25px;
+                color:$color-accent;
+                padding: 10px;
+                transition: all .3s;
+
+                &:hover {
+                    background-color: black !important;
+                    & > a {
+                        color: $color-primary;
+                        text-decoration: none;
+                    }
+                }
+
+                & a {
+                    display: block;
+                    width: 100%;
+                    @include cp-flex-between-center;
+                }
+            }
+        } 
+    }
+}

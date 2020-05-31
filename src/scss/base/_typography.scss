@@ -1,0 +1,18 @@
+.heading{
+    &__primary {
+        @include cp-font-color;
+        font-family: cpPrimaryFont;
+        font-size: 40px;
+    };
+    &__secondary {
+        @include cp-font-color-2;
+        font-family: cpPrimaryFont;
+        font-size: 32px;
+    };
+}
+
+p {
+    font-family: cpSecondaryFont;
+    @include cp-font-color-2;
+    font-size:16px;
+}

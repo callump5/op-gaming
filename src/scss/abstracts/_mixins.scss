@@ -1,0 +1,47 @@
+@mixin cp-flex-between-center {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin cp-flex-end-center {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+@mixin cp-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin container {
+    width: 80%;
+    margin: 0 auto; 
+}
+
+@mixin cp-font-color {
+
+    display: inline-block;
+
+    background: -webkit-linear-gradient( -90deg, #ffffff, rgb(255, 166, 0));
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+}
+
+
+@mixin cp-font-color-2{
+
+    display: inline-block;
+
+    background: -webkit-linear-gradient( -90deg, #ffffff, rgb(153, 153, 153));
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+}

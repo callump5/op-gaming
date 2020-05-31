@@ -1,0 +1,93 @@
+.your-class {
+
+    border-top: solid 3px silver;
+    border-bottom: solid 3px silver;
+}
+
+.slick{
+
+    &-next, &-prev {
+        background-color: transparent;
+        border:none;
+        padding: 10px;
+        width: 100px;
+
+        &:focus {
+            outline:0;
+        }
+    }
+
+    &-next {
+        z-index: 100;
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        color: transparent;
+        background: linear-gradient(90deg, rgba(0,0,0,0), rgba(0,0,0,.8));;
+        &::before{
+            content: ' ';
+            position: absolute;
+            height: 25px !important;
+            width: 25px !important;
+            border-top: 3px solid rgba(255, 166, 0, .8 );;
+            border-right: 3px solid  rgba(255, 166, 0, .8);;
+            z-index: 1000;
+            transform: rotate(45deg);
+        }
+    }
+
+    &-prev { 
+        z-index: 100;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        color: transparent;
+        background: linear-gradient(-90deg, rgba(0,0,0,0), rgba(0,0,0,.6));;
+        &::before{
+            content: ' ';
+            position: absolute;
+            height: 25px !important;
+            width: 25px !important;
+            border-top: 3px solid rgba(255, 166, 0, .8 );;
+            border-right: 3px solid  rgba(255, 166, 0, .8);;
+            z-index: 1000;
+            transform: rotate(-135deg);
+        }
+    }
+
+    &-slide {
+        height: 400px !important;
+        overflow: none;
+        position: relative;
+
+        &_content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateY(-50%) translateX(-50%);
+
+            z-index: 2;
+
+        }
+
+        &_overlay {
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        & img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateY(-50%) translateX(-50%);
+            width: 100%;
+        }
+    }
+}
