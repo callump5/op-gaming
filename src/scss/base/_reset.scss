@@ -30,12 +30,14 @@ li a {
 
 .main {
     min-height: 50vh;;
+    padding-top: 50px;
     background:linear-gradient(-10deg, #1a1b1f 0%,#2d3146 65% );
 }
 
 
 
 .container {
+    max-width: 90% !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
 }

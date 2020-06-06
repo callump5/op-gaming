@@ -1,5 +1,7 @@
 .nav {
-    background:linear-gradient(-10deg, #1a1b1f 0%,#2d3146 65% );
+   
+    background-color: black;
+   // background:linear-gradient(-10deg, #1a1b1f 0%,#2d3146 65% );
     
     & .container {
         @include cp-flex-between-center;
@@ -7,9 +9,9 @@
 
     &__logo {
         display: block;
-        font-size: 30px;
+        font-size: 25px;
         padding: 20px 0 12px 0;
-        @include cp-font-color-2;
+        @include cp-font-color;
         font-family: cpPrimaryFont;
         color:$color-accent ;
         margin: 0;
@@ -26,7 +28,7 @@
         &--item {
 
             & a {
-                @include cp-font-color-2;
+                @include cp-font-color;
                 font-size: 15px !important;
             }
             
